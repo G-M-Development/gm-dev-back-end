@@ -1,15 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import * as nodemailer from 'nodemailer';
-const { MAIL_HOST, MAil_USER, MAIL_PASS } = process.env;
-const transporter = nodemailer.createTransport({
-  host: MAIL_HOST,
-  port: 465,
-  secure: true,
-  auth: {
-    user: MAil_USER,
-    pass: MAIL_PASS,
-  },
-});
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('dotenv').config();
+const { MAIL_HOST, MAIL_USER, MAIL_RASS, MAIL_PORT } = process.env;
+
+let transporter;
+try {
+  transporter = nodemailer.createTransport({
+    host: MAIL_HOST,
+    port: Number(MAIL_PORT),
+    secure: true,
+    auth: {
+      user: MAIL_USER,
+      pass: MAIL_RASS,
+    },
+  });
+} catch (error) {}
 @Injectable()
 export class AppService {
   async sendMail(data) {
