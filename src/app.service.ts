@@ -29,7 +29,6 @@ export class AppService {
     const mail = data.email;
     const regexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const matchAll = regexp.test(mail);
-    console.log(matchAll);
     if (!matchAll) {
       throw new BadRequestException('Некоректна пошта');
     }
@@ -54,7 +53,6 @@ export class AppService {
     const mail = data.email;
     const regexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const matchAll = regexp.test(mail);
-    console.log(matchAll);
     if (!matchAll) {
       throw new BadRequestException('Некоректна пошта');
     }
